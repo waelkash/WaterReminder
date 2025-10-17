@@ -22,12 +22,15 @@ class WaterReminderWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, 
         )
         nm.createNotificationChannel(channel)
 
-        val notif = NotificationCompat.Builder(ctx, CHANNEL_ID)
-            .setSmallIcon(android.R.drawable.ic_dialog_info)
-            .setContentTitle(ctx.getString(R.string.reminder_title))
-            .setContentText(ctx.getString(R.string.reminder_text))
-            .setAutoCancel(true)
-            .build()
+        val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+
+val notif = NotificationCompat.Builder(ctx, CHANNEL_ID)
+    .setSmallIcon(android.R.drawable.ic_dialog_info)
+    .setContentTitle(ctx.getString(R.string.reminder_title))
+    .setContentText(ctx.getString(R.string.reminder_text))
+    .setAutoCancel(true)
+    .setSound(alarmSound)
+    .build()
 
         nm.notify(NOTIFICATION_ID, notif)
     }
