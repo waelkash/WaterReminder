@@ -21,6 +21,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     binding.btnStart.setOnClickListener {
         prefs.running = true
         prefs.paused = false
+        prefs.startTime = System.currentTimeMillis()
         WaterReminderWorker.schedule(this)
         countdown.start()                       // ⏱️ start 30-min clock
         binding.tvCountdown.visibility = View.VISIBLE
