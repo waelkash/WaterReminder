@@ -22,5 +22,6 @@ class SharedPrefsUtil(context: Context) {
 
     fun reset() {
         prefs.edit().clear().apply()
+prefs.edit().remove("start_time").apply() 
     }
 }
