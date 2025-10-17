@@ -35,3 +35,13 @@
         android:layout_marginTop="12dp"
         android:text="@string/pause" />
 </LinearLayout>
+<TextView
+    android:id="@+id/tvCountdown"
+    android:text="00:00"
+    android:textSize="48sp"
+    android:textStyle="bold"
+    android:textColor="@android:color/holo_blue_bright"
+    android:layout_marginBottom="16dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:visibility="gone" />
