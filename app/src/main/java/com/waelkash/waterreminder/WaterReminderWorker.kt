@@ -42,7 +42,7 @@ class WaterReminderWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, 
 
         fun schedule(context: Context) {
             val request = PeriodicWorkRequestBuilder<WaterReminderWorker>(
-                30, java.util.concurrent.TimeUnit.MINUTES
+                30, java.util.concurrent.TimeUnit.SECOND
             ).build()
 
             WorkManager.getInstance(context)
