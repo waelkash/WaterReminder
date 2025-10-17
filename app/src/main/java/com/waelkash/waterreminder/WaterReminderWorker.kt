@@ -15,23 +15,12 @@ class WaterReminderWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, 
 
     private fun showNotification(ctx: Context) {
     val nm = ctx.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-    val channel = NotificationChannel(
-        CHANNEL_ID,
-        "Water reminders",
-        NotificationManager.IMPORTANCE_HIGH
-    )
+    val channel = NotificationChannel(CHANNEL_ID, "Water reminders", NotificationManager.IMPORTANCE_HIGH)
     nm.createNotificationChannel(channel)
 
-    // 1) system alarm tone
     val alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-
-    // 2) vibration pattern (0ms off, 300ms on)
-    val vibration = longArrayOf(0, 300)
-
-    // 3) blue LED blink (on 500ms, off 1500ms)
-    val ledColor  = android.graphics.Color.BLUE
-    val ledOnMs   = 500
-    val ledOffMs  = 1500
+    val vibration  = longArrayOf(0, 300)
+    val ledColor   = android.graphics.Color.BLUE
 
     val notif = NotificationCompat.Builder(ctx, CHANNEL_ID)
         .setSmallIcon(android.R.drawable.ic_dialog_info)
@@ -40,14 +29,12 @@ class WaterReminderWorker(ctx: Context, params: WorkerParameters) : Worker(ctx, 
         .setAutoCancel(true)
         .setSound(alarmSound)
         .setVibrate(vibration)
-        .setLights(ledColor, ledOnMs, ledOffMs)
+        .setLights(ledColor, 500, 1500)
         .build()
 
-    nm.notify(NOTIFICATION_ID, notif)
+    nm.notify(NOTIFICATION_ID, notif)   // ← inside the function
 }
 
-        nm.notify(NOTIFICATION_ID, notif)
-    }
 
     companion object {
         private const val CHANNEL_ID = "water_channel"
