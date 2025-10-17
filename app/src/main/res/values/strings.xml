@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WaterReminder</string>
+    <string name="cup_count">Cup %1$d / %2$d</string>
+    <string name="start">Start first sip</string>
+    <string name="cup_done">Finished cup</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="reminder_title">Time to drink</string>
+    <string name="reminder_text">Remember your next sip!</string>
+</resources>
